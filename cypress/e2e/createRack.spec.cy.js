@@ -2,9 +2,15 @@ describe("it should login to the application and create a rack", () => {
   it("creates a rack", () => {
     cy.visit("http://wgs.app.dev.clearlabs.com/login");
 
+    const env = Cypress.env();
+    console.log('env', env);
+    const email = Cypress.env("LAB_ADMIN_EMAIL");
+    const password = Cypress.env("LAB_ADMIN_PASSWORD");
+    console.log('email', email);
+
     // login
-    cy.get('input[name="email"]').type("century.marlone@clearlabs.com");
-    cy.get('input[name="password"]').type("test1234{enter}");
+    cy.get('input[name="email"]').type(email);
+    cy.get('input[name="password"]').type(`${password}{enter}`);
 
     // create a new rack
     cy.get('a[href*="racks"]').click();
