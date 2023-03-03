@@ -56,5 +56,9 @@ describe("it should login to the application and create a rack", () => {
     cy.get("select").select("30 - 40x");
     cy.get("#cl-lab-wgs-add-rack-sample").click();
     cy.get("#cl-button-continue-toggle-protocol").click();
+
+    // plate preview
+    cy.contains("Rack successfully created.").should("be.visible");
+    cy.contains("Plate Preview").should("be.visible");
   });
 });
