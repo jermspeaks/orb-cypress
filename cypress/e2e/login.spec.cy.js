@@ -1,5 +1,5 @@
-describe("it should login to the application and create a rack", () => {
-  it("creates a rack", () => {
+describe("Login", () => {
+  it("logs in a lab admin user", () => {
     const baseUrl = Cypress.env("BASE_URL");
     const email = Cypress.env("LAB_ADMIN_EMAIL");
     const password = Cypress.env("LAB_ADMIN_PASSWORD");

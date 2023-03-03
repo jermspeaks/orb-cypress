@@ -10,7 +10,20 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add("login", (email, password) => {
+  cy.session([email, password], () => {
+    const apiEndpoint = Cypress.env("API_ENDPOINT");
+    cy.request({
+      method: "POST",
+      url: `${apiEndpoint}/login`,
+      body: { email, password, appMode: "WGS" },
+    }).then(({ body }) => {
+      console.log('body', body);
+      window.sessionStorage.setItem("appMode", "WGS");
+      window.sessionStorage.setItem("token", body.access_token);
+    });
+  });
+});
 //
 //
 // -- This is a child command --
