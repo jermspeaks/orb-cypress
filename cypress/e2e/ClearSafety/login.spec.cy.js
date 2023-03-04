@@ -1,9 +1,10 @@
 describe("Login", () => {
   it("logs in a lab admin user", () => {
-    const baseUrl = Cypress.env("BASE_URL");
-    const email = Cypress.env("LAB_ADMIN_EMAIL");
-    const password = Cypress.env("LAB_ADMIN_PASSWORD");
+    const baseUrl = Cypress.env("CS_BASE_URL");
+    const email = Cypress.env("CS_LAB_ADMIN_EMAIL");
+    const password = Cypress.env("CS_LAB_ADMIN_PASSWORD");
 
+    cy.setAppMode("TNGS");
     cy.visit(`${baseUrl}/login`);
 
     // login
